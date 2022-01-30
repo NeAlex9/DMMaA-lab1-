@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1", "Lab1\Lab1.csproj", "{7869B7C6-126A-4310-8C7D-B455E3B0B061}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B1AB7AC-0E55-41C7-87F7-469C4C0E75F0} = {1B1AB7AC-0E55-41C7-87F7-469C4C0E75F0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMeans", "KMeans\KMeans.csproj", "{1B1AB7AC-0E55-41C7-87F7-469C4C0E75F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7869B7C6-126A-4310-8C7D-B455E3B0B061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7869B7C6-126A-4310-8C7D-B455E3B0B061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7869B7C6-126A-4310-8C7D-B455E3B0B061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7869B7C6-126A-4310-8C7D-B455E3B0B061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B1AB7AC-0E55-41C7-87F7-469C4C0E75F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B1AB7AC-0E55-41C7-87F7-469C4C0E75F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B1AB7AC-0E55-41C7-87F7-469C4C0E75F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B1AB7AC-0E55-41C7-87F7-469C4C0E75F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {48AB1764-A2A9-4576-977E-E49F8D792C50}
+	EndGlobalSection
+EndGlobal
