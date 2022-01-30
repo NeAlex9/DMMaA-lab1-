@@ -4,12 +4,11 @@ namespace KMeans
 {
     public class Painter
     {
-        private const int BitmapWidth = 1000;
         private const int PenWidth = 2;
-
-        public Bitmap MakeImage(KMeansData data)
+        
+        public Bitmap MakeImage(KMeansData data, int bitmapSize)
         {
-            Bitmap b = new Bitmap(BitmapWidth, BitmapWidth);
+            Bitmap b = new Bitmap(bitmapSize, bitmapSize);
             using var g = Graphics.FromImage(b);
             g.Clear(Color.White);
             foreach (var vector in data.Vectors)

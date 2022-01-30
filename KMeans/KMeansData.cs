@@ -33,7 +33,15 @@ namespace KMeans
         public bool Equals(KMeansData other) =>
             this.FormCount == other.FormCount
             && this.ClassCount == other.ClassCount
-            && other.Vectors.SequenceEqual(this.Vectors)
-            && other.Centers.SequenceEqual(this.Centers);
+            && other.Centers.SequenceEqual(this.Centers, new EqualityComparer());
+
+        private class EqualityComparer : IEqualityComparer<(Point Point, int ClassIndex)>
+        {
+            public bool Equals((Point Point, int ClassIndex) x, (Point Point, int ClassIndex) y) =>
+                x.Point.X == y.Point.X && x.Point.Y == y.Point.Y && x.ClassIndex == y.ClassIndex;
+
+            public int GetHashCode((Point Point, int ClassIndex) obj) =>
+                obj.ClassIndex;
+        }
     }
 }

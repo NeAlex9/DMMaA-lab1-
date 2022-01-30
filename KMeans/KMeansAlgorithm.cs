@@ -15,6 +15,7 @@ namespace KMeans
         public readonly int ClassCount;
         public readonly int FormCount;
         private const int TotalAttempts = 40;
+        private const int bitmapSize = 1000;
 
         public KMeansAlgorithm(int classCount, int formCount)
         {
@@ -25,16 +26,17 @@ namespace KMeans
         public void AssignAlgorithm()
         {
             var painter = new Painter();
-            var randomizer = new RandomGenerationService();
+            var randomizer = new RandomGenerationService(bitmapSize);
             var data = new KMeansData(this.ClassCount, this.FormCount);
             randomizer.Generate(ref data);
             var actualData = data.Clone();
             var attempt = 1;
             do
             {
+                data = actualData.Clone();
                 this.CalculateArea(ref actualData);
                 this.CalculateCenter(ref actualData);
-                var image = painter.MakeImage(actualData);
+                var image = painter.MakeImage(actualData, bitmapSize);
                 var path = Path.Combine(this.Directory, attempt.ToString() + ".bmp");
                 image.Save(path, ImageFormat.Bmp);
                 attempt++;
@@ -45,7 +47,7 @@ namespace KMeans
         {
             for (int i = 0; i < actualData.Vectors.Length; i++)
             {
-                var minDistance = 10000000d;
+                double minDistance = bitmapSize * bitmapSize;
                 var classIndex = actualData.Vectors[i].ClassIndex;
                 foreach (var center in actualData.Centers)
                 {

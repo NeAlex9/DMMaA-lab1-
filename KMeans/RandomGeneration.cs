@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 
@@ -10,9 +6,14 @@ namespace KMeans
 {
     public class RandomGenerationService
     {
-        private const int MaxValueVector = 1000;
+        private readonly int maxValueVector;
         private static readonly Random RandomGen = new Random();
 
+        public RandomGenerationService(int maxVectorValue)
+        {
+            this.maxValueVector = maxVectorValue;
+        }
+        
         public void Generate(ref KMeansData data)
         {
             this.GenerateRandomForms(ref data);
@@ -23,7 +24,7 @@ namespace KMeans
         {
             for (int i = 0; i < data.FormCount; i++)
             {
-                data.Vectors[i].Point = new Point(RandomGen.Next(0, MaxValueVector), RandomGen.Next(0, MaxValueVector));
+                data.Vectors[i].Point = new Point(RandomGen.Next(0, maxValueVector), RandomGen.Next(0, maxValueVector));
                 data.Vectors[i].ClassIndex = 1;
             }
         }

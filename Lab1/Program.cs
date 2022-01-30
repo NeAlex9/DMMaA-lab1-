@@ -7,7 +7,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            var kMeansAlgo = new KMeansAlgorithm(8, 30000);
+            var kMeansAlgo = new KMeansAlgorithm(2, 30000);
             kMeansAlgo.AssignAlgorithm();
         }
     }
