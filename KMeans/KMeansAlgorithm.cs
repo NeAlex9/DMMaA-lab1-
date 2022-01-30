@@ -14,7 +14,7 @@ namespace KMeans
         private readonly string Directory = "..\\..\\Iterations";
         public readonly int ClassCount;
         public readonly int FormCount;
-        private const int TotalAttempts = 30;
+        private const int TotalAttempts = 40;
 
         public KMeansAlgorithm(int classCount, int formCount)
         {

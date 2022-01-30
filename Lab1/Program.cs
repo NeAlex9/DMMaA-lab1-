@@ -1,13 +1,13 @@
 ﻿using System.Drawing;
 using KMeans;
 
-namespace Console
+namespace Lab1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var kMeansAlgo = new KMeansAlgorithm(6, 30000);
+            var kMeansAlgo = new KMeansAlgorithm(8, 30000);
             kMeansAlgo.AssignAlgorithm();
         }
     }
