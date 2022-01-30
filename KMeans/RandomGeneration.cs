@@ -15,13 +15,19 @@ namespace KMeans
 
         public void Generate(ref KMeansData data)
         {
-            data.Vectors
-                .ToList()
-                .ForEach(elem =>
-                    elem.Point = new Point(RandomGen.Next(0, MaxValueVector), RandomGen.Next(0, MaxValueVector)));
-            GenerateRandomCentres(ref data);
+            this.GenerateRandomForms(ref data);
+            this.GenerateRandomCentres(ref data);
         }
 
+        private void GenerateRandomForms(ref KMeansData data)
+        {
+            for (int i = 0; i < data.FormCount; i++)
+            {
+                data.Vectors[i].Point = new Point(RandomGen.Next(0, MaxValueVector), RandomGen.Next(0, MaxValueVector));
+                data.Vectors[i].ClassIndex = 1;
+            }
+        }
+        
         private void GenerateRandomCentres(ref KMeansData data)
         {
             for (int i = 0; i < data.Centers.Length; i++)

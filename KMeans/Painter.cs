@@ -12,16 +12,23 @@ namespace KMeans
             Bitmap b = new Bitmap(BitmapWidth, BitmapWidth);
             using var g = Graphics.FromImage(b);
             g.Clear(Color.White);
-            for (int i = 0; i < data.FormCount; i++)
+            foreach (var vector in data.Vectors)
             {
-                g.DrawRectangle(SelectColor(data.Vectors[i].ClassIndex), data.Vectors[i].Point.X,
-                    data.Vectors[i].Point.Y, 1, 1);
-                g.FillRectangle(SelectColor(data.Vectors[i].ClassIndex).Brush, data.Vectors[i].Point.X,
-                    data.Vectors[i].Point.Y, 1, 1);
+                g.DrawRectangle(SelectColor(vector.ClassIndex), vector.Point.X,
+                    vector.Point.Y, 1, 1);
+                g.FillRectangle(SelectColor(vector.ClassIndex).Brush, vector.Point.X,
+                    vector.Point.Y, 1, 1);
             }
 
+            foreach (var center in data.Centers)
+            { 
+                g.DrawRectangle(SelectColor(center.ClassIndex), center.Point.X,
+                    center.Point.Y, 10, 10);
+                g.FillRectangle(SelectColor(center.ClassIndex).Brush, center.Point.X,
+                    center.Point.Y, 10, 10);
+            }
+            
             return b;
-            // b.Save(this.Directory + j.ToString() + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
         }
 
         private static Pen SelectColor(int classIndex)

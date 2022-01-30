@@ -7,8 +7,7 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            var randomGeneration = new RandomGenerationService();
-            var kMeansAlgo = new KMeansAlgorithm(6, 1000);
+            var kMeansAlgo = new KMeansAlgorithm(6, 30000);
             kMeansAlgo.AssignAlgorithm();
         }
     }

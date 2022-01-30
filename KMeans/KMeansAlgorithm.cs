@@ -11,7 +11,7 @@ namespace KMeans
 {
     public class KMeansAlgorithm
     {
-        private readonly string Directory = "../../Iterations";
+        private readonly string Directory = "..\\..\\Iterations";
         public readonly int ClassCount;
         public readonly int FormCount;
         private const int TotalAttempts = 30;
@@ -35,10 +35,10 @@ namespace KMeans
                 this.CalculateArea(ref actualData);
                 this.CalculateCenter(ref actualData);
                 var image = painter.MakeImage(actualData);
-                image.Save(Path.Combine(this.Directory, attempt.ToString()), ImageFormat.Png);
+                var path = Path.Combine(this.Directory, attempt.ToString() + ".bmp");
+                image.Save(path, ImageFormat.Bmp);
                 attempt++;
-            }
-            while (TotalAttempts >= attempt && !data.Equals(actualData));
+            } while (TotalAttempts >= attempt && !data.Equals(actualData));
         }
 
         private void CalculateArea(ref KMeansData actualData)
@@ -63,18 +63,23 @@ namespace KMeans
 
         private void CalculateCenter(ref KMeansData actualData)
         {
-            var sumX = 0;
-            var sumY = 0;
             for (int i = 0; i < actualData.Centers.Length; i++)
             {
+                var sumX = 0;
+                var sumY = 0;
+                var count = 0;
                 for (int j = 0; j < actualData.Vectors.Length; j++)
                 {
-                    sumX += actualData.Vectors[j].Point.X;
-                    sumY +=  actualData.Vectors[j].Point.Y;
+                    if (actualData.Vectors[j].ClassIndex == i)
+                    {
+                        sumX += actualData.Vectors[j].Point.X;
+                        sumY += actualData.Vectors[j].Point.Y;
+                        count++;
+                    }
                 }
 
-                actualData.Centers[i].Point.X = sumX / actualData.Vectors.Length;
-                actualData.Centers[i].Point.Y = sumY / actualData.Vectors.Length;
+                actualData.Centers[i].Point.X = sumX / count;
+                actualData.Centers[i].Point.Y = sumY / count;
             }
         }
 
